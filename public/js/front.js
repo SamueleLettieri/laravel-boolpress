@@ -1999,7 +1999,40 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_CardPost_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/CardPost.vue */ "./resources/js/components/CardPost.vue");
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    CardPost: _components_CardPost_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      post: [],
+      loading: false
+    };
+  },
+  methods: {
+    getMovies: function getMovies() {
+      var _this = this;
+
+      var id = this.$route.params.id;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/posts/".concat(id)).then(function (response) {
+        console.log(response);
+        _this.post = response.data.results;
+        _this.loading = false;
+      })["catch"](function (error) {
+        console.warn(error);
+      });
+      console.log(this.id);
+    }
+  },
+  created: function created() {
+    this.getMovies();
+  }
+});
 
 /***/ }),
 
@@ -2061,7 +2094,13 @@ var render = function render() {
     staticClass: "card-body"
   }, [_c("h3", {
     staticClass: "card-title m-3"
-  }, [_vm._v(_vm._s(_vm.post.user.name))]), _vm._v(" "), _c("h5", {
+  }, [_vm._v(_vm._s(_vm.post.user.name))]), _vm._v(" "), _c("h3", {
+    staticClass: "card-title m-3"
+  }, [_c("router-link", {
+    attrs: {
+      to: "posts/".concat(_vm.post.id)
+    }
+  }, [_vm._v("      \r\n                    " + _vm._s(_vm.post.title) + "\r\n                ")])], 1), _vm._v(" "), _c("h5", {
     staticClass: "card-title m-3"
   }, _vm._l(_vm.post.tags, function (tag) {
     return _c("span", {
@@ -2071,9 +2110,7 @@ var render = function render() {
         href: "#"
       }
     }, [_vm._v("\r\n                        #" + _vm._s(tag.name) + "\r\n                    ")])]);
-  }), 0), _vm._v(" "), _c("h3", {
-    staticClass: "card-title m-3"
-  }, [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("p", {
+  }), 0), _vm._v(" "), _c("p", {
     staticClass: "card-text m-3"
   }, [_vm._v(_vm._s(_vm.post.post_content))])]), _vm._v(" "), _c("div", {
     staticClass: "card-footer text-muted"
@@ -2123,11 +2160,11 @@ var render = function render() {
       to: "/"
     }
   }, [_vm._v("Home")])], 1), _vm._v(" "), _c("li", {
-    staticClass: "nav-item"
+    staticClass: "nav-item active"
   }, [_c("router-link", {
     staticClass: "nav-link",
     attrs: {
-      to: "/post"
+      to: "/post/3"
     }
   }, [_vm._v("Post")])], 1)])])], 1);
 };
@@ -2186,7 +2223,14 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("h1", [_vm._v("ciao")]);
+  return _c("section", [_c("div", {
+    staticClass: "container"
+  }, [_c("CardPost", {
+    key: _vm.post.id,
+    attrs: {
+      post: _vm.post
+    }
+  })], 1)]);
 };
 
 var staticRenderFns = [];
@@ -17884,7 +17928,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'home',
     component: _pages_MainHome__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: '/post',
+    path: '/post/:id',
     name: 'post',
     component: _pages_MainPost__WEBPACK_IMPORTED_MODULE_3__["default"]
   }]

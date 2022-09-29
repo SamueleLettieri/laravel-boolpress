@@ -10,6 +10,11 @@
         </div>    
         <div class="card-body">
             <h3 class="card-title m-3">{{post.user.name}}</h3>
+            <h3 class="card-title m-3">
+                <router-link :to="`posts/${post.id}`">      
+                    {{post.title}}
+                </router-link>
+            </h3>
             <h5 class="card-title m-3">
                 <span v-for="tag in post.tags" :key="tag.id">
                     <a href="#">
@@ -17,7 +22,6 @@
                     </a>
                 </span>
             </h5>
-            <h3 class="card-title m-3">{{post.title}}</h3>
             <p class="card-text m-3">{{post.post_content}}</p>
         </div> 
         <div class="card-footer text-muted ">

@@ -15,7 +15,7 @@ const router = new VueRouter({
             component : MainHome
         },
         {
-            path: '/post',
+            path: '/post/:id',
             name: 'post',
             component : MainPost
         },
