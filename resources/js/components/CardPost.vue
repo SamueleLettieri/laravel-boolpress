@@ -1,5 +1,6 @@
 <template>
 <div class="container mt-5">
+    <Loading class="text-center" v-if="isLoading" />
     <div class="card text-center">
         <div class="card-header">
             post
@@ -33,26 +34,25 @@
  
 <script>
 
+
 export default {
-props: 
-    {
-        'post': 
-        {
+    props: {
+        "post": {
             type: Object
         }
     },
-
-
-methods:{
-    ValidURL(str) {
-        var regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-        if(!regex .test(str)) {
-            return false;
-        } else {
-            return true;
+    methods: {
+        ValidURL(str) {
+            var regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+            if (!regex.test(str)) {
+                return false;
+            }
+            else {
+                return true;
+            }
         }
-    } 
-}
+    },
+    
 }
 </script>
 

@@ -1,7 +1,8 @@
 <template>
   <main>
-    <div class="container">
-        <h1 class="mb-5">Posts</h1>
+      <div class="container">
+        <Loading class="text-center" v-if="isLoading" />
+        <h1 class="mb-5" v-else>Posts</h1>
         <CardPost v-for="post in posts" :key="post.id" :post="post"/>
     </div>
   </main>
@@ -10,10 +11,12 @@
 <script>
 import axios from "axios";
 import CardPost from '../components/CardPost.vue'
+import Loading from '../components/loading.vue'
 export default {
     components: {
-        CardPost 
-    },
+    CardPost,
+    Loading
+},
 
 
     data: function(){
@@ -21,7 +24,7 @@ export default {
             posts : [],
             currentPagge : 1,
             lastPage : null,
-            loading : false,
+            isLoading : true,
         }
     },
 
@@ -33,7 +36,7 @@ export default {
                 this.posts = response.data.results.data;
                 this.currentPagge = response.data.results.currentPagge;
                 this.lastPage = response.data.results.lastPage;
-                
+                this.isLoading = false;
             })
                 .catch((error) => {
                 console.warn(error);

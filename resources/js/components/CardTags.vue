@@ -10,7 +10,7 @@
 <script>
 export default {
 props: {
-    tag: Object,
+  tag: Object,
 }
 }
 </script>
