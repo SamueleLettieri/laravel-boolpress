@@ -15,7 +15,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
+        $tags = Tag::with('posts')->paginate(101);
 
         return response()->json([
             'response' => true,
@@ -53,7 +53,7 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        $tags = Tag::all()->find($id);
+        $tags = Tag::with('posts.user')->find($id);
 
         if ($tags) {
             return response()->json([

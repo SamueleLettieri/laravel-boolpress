@@ -18,13 +18,15 @@ export default {
 
     data: function(){
         return{
-            post : [],
+            post : {
+                user: '',
+            },
             loading : false,
         }
     },
 
     methods: {
-        getMovies() {
+        getpost() {
             const id = this.$route.params.id;
             
             axios.get( `/api/posts/${id}`)
@@ -40,7 +42,7 @@ export default {
         },
     },
     created(){
-        this.getMovies();
+        this.getpost();
     }
 }
 </script>

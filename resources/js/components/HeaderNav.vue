@@ -7,7 +7,10 @@
         <router-link class="nav-link" to="/">Home</router-link>
       </li>
       <li class="nav-item active">
-        <router-link class="nav-link" to="/post/3">Post</router-link>
+        <router-link class="nav-link" to="/post">Post</router-link>
+      </li>
+      <li class="nav-item active">
+        <router-link class="nav-link" to="/tags">tags</router-link>
       </li>
     </ul>
   </div>

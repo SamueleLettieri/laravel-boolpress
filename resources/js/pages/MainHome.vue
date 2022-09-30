@@ -1,6 +1,7 @@
 <template>
   <main>
     <div class="container">
+        <h1 class="mb-5">Posts</h1>
         <CardPost v-for="post in posts" :key="post.id" :post="post"/>
     </div>
   </main>
@@ -25,7 +26,7 @@ export default {
     },
 
     methods: {
-        getMovies(postsPage = 1) {
+        getPosts(postsPage = 1) {
             axios.get( `/api/posts`, {page: postsPage})
                 .then((response) => {
                 console.log(response.data.results.data); 
@@ -40,7 +41,7 @@ export default {
         },
     },
     created(){
-        this.getMovies();
+        this.getPosts();
     }
 }
 </script>
