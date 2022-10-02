@@ -7,6 +7,8 @@ import MainHome from './pages/MainHome'
 import MainPost from './pages/MainPost'
 import PostsTags from './pages/PostsTags'
 import MainTags from './pages/MainTags'
+import UserPost from './pages/UserPost'
+import MainUsers from './pages/MainUsers'
 
 const router = new VueRouter({
     mode: 'history',
@@ -30,6 +32,16 @@ const router = new VueRouter({
             path: '/tags',
             name: 'MainTags',
             component : MainTags
+        },
+        {
+            path: '/users/:id',
+            name: 'UserPost',
+            component : UserPost
+        },
+        {
+            path: '/users',
+            name: 'MainUsers',
+            component : MainUsers
         },
     ],
 });

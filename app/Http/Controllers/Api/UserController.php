@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
+use App\User;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user.posts', 'tags')->paginate(101);
-        
+        $users = User::with('posts')->paginate(101);
 
         return response()->json([
             'response' => true,
-            'quantity' => count($posts),
-            'results' => $posts,
-
+            'quantity' => count($users),
+            'results' => $users,
         ]);
     }
 
@@ -55,12 +53,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::with('user')->find($id);
+        $user = User::with('posts')->find($id);
 
-        if ($post) {
+        if ($user) {
             return response()->json([
                 'response' => true,
-                'results' => $post,
+                'results' => $user,
 
             ]);
         }    
@@ -98,8 +96,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Post::destroy($id);
+        User::destroy($id);
 
-         return response('', 204);
+        return response('', 204);
     }
 }

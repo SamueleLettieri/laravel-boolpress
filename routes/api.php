@@ -29,4 +29,9 @@ Route::namespace('Api')->group(Function(){
     Route::get('/tags', 'TagController@index');
     Route::get('/tags/{id}', 'TagController@show');
     Route::middleware('auth:api')->delete('/tags/{id}', 'TagController@destroy');
+    
+    /* Users */
+    Route::get('/users', 'UserController@index');
+    Route::get('/users/{id}', 'UserController@show');
+    Route::middleware('auth:api')->delete('/users/{id}', 'UserController@destroy');
 });

@@ -1,6 +1,6 @@
 <template>
 <div class="container mt-5">
-    <Loading class="text-center" v-if="isLoading" />
+
     <div class="card text-center">
         <div class="card-header">
             post
@@ -10,7 +10,9 @@
             <img v-else :src="'storage/' + post.post_image" class="card-img-top w-50 rounded-0 m-3" :alt="post.post_image">
         </div>    
         <div class="card-body">
-            <h3 class="card-title m-3">{{post.user.name}}</h3>
+            <h3 class="card-title m-3">
+                {{post.user.name}}
+            </h3>
             <h3 class="card-title m-3">
                 <router-link :to="`posts/${post.id}`">      
                     {{post.title}}
