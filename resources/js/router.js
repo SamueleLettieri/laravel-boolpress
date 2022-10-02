@@ -9,6 +9,7 @@ import PostsTags from './pages/PostsTags'
 import MainTags from './pages/MainTags'
 import UserPost from './pages/UserPost'
 import MainUsers from './pages/MainUsers'
+import PostsSearchPage from './pages/PostsSearchPage'
 
 const router = new VueRouter({
     mode: 'history',
@@ -17,6 +18,11 @@ const router = new VueRouter({
             path: '/',
             name: 'MainHome',
             component : MainHome
+        },
+        {
+            path: '/posts/search',
+            name: 'PostsSearchPage',
+            component : PostsSearchPage
         },
         {
             path: '/posts/:id',

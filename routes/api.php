@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('Api')->group(Function(){
     /* Posts */
     Route::get('/posts', 'PostController@index');
+    Route::get('/posts/search/{title}', 'PostController@searchBytitle');
     Route::get('/posts/{id}', 'PostController@show');
     Route::middleware('auth:api')->delete('/posts/{id}', 'PostController@destroy');
 
@@ -34,4 +35,8 @@ Route::namespace('Api')->group(Function(){
     Route::get('/users', 'UserController@index');
     Route::get('/users/{id}', 'UserController@show');
     Route::middleware('auth:api')->delete('/users/{id}', 'UserController@destroy');
+
+
+    
+
 });
